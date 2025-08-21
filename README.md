@@ -1,5 +1,18 @@
 # 🚗 Algoritmo de Paradas Mínimas
 
+## 📋 Problema Resolvido
+
+**Problema do Caminhoneiro**: Um caminhão com autonomia limitada precisa viajar de um ponto A até um ponto B, passando por diversos postos de gasolina. O objetivo é encontrar o **número mínimo de paradas** necessárias para completar a viagem.
+
+### 🎯 Características do Problema:
+- **Entrada**: Lista de posições dos postos, autonomia do veículo, destino final
+- **Saída**: Lista das posições onde parar para abastecer (mínimo possível)
+- **Restrição**: O caminhão não pode ficar sem combustível
+- **Objetivo**: Minimizar o número total de paradas
+
+### 💡 Solução Implementada:
+**Algoritmo Guloso** que sempre escolhe o posto mais distante alcançável a partir da posição atual, garantindo a **otimalidade** da solução com **complexidade O(n)**.
+
 ## 📋 Descrição
 
 Este projeto implementa um **algoritmo guloso** para resolver o **problema do caminhoneiro** - encontrar o número mínimo de paradas necessárias para abastecimento em uma viagem.
@@ -37,11 +50,19 @@ Trabalho 3/
 
 ## 🧪 Casos de Teste
 
+### Casos Básicos:
 1. **Caso Trivial**: Viagem sem paradas necessárias
 2. **Caso Impossível**: Viagem que não pode ser completada
 3. **Algoritmo Guloso**: Múltiplos postos possíveis
 4. **Escolha Mínima**: Excesso de postos, escolha otimizada
-5. **Teste de Desempenho**: Escala grande para demonstrar O(n)
+
+### Testes de Performance (Demonstração O(n)):
+5. **100.000 postos**: Base de comparação
+6. **200.000 postos**: 2x crescimento
+7. **300.000 postos**: 3x crescimento
+8. **1.000.000 postos**: 10x crescimento
+9. **10.000.000 postos**: 100x crescimento
+10. **🚀 Todos os Testes**: Execução automática com análise comparativa
 
 ## 🚀 Como Executar
 

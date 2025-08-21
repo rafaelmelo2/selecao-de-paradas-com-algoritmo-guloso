@@ -22,8 +22,7 @@ def min_paradas_otimizado(posicoes_postos, autonomia_veiculo, destino_final):
     while posicao_atual_veiculo < destino_final:
         posto_mais_distante_alcancavel = posicao_atual_veiculo
 
-        # Otimização: A busca pelo próximo posto mais distante começa do último ponto de verificação.
-        # Ele avança o ponteiro enquanto houver postos alcançáveis.
+        # O(n) - Esse laço interno percorre a lista de postos uma única vez no total, porque a variável indice_proximo_posto nunca volta para trás, só avança.
         while indice_proximo_posto < len(posicoes_postos) and posicoes_postos[indice_proximo_posto] <= posicao_atual_veiculo + autonomia_veiculo:
             posto_mais_distante_alcancavel = posicoes_postos[indice_proximo_posto]
             indice_proximo_posto += 1
