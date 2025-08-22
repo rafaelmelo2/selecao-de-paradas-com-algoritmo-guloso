@@ -111,9 +111,9 @@ A opção 11 executa testes de performance e gera um gráfico comparativo focado
 - **Comparação O(n) vs O(n²)**: Demonstra visualmente a eficiência do algoritmo guloso
 - **Análise estatística**: Inclui R² para validar o ajuste linear
 - **Comparação quantitativa**: Mostra quantas vezes seria mais lento se fosse quadrático
-- **Testes otimizados**: Usa apenas os 3 primeiros testes de performance (100k, 200k, 300k postos) para melhor visualização
+- **Testes em grande escala**: Usa 1M, 5M e 25M de postos para demonstrar claramente o crescimento linear O(n)
 
-O gráfico é salvo como `comparacao_on_vs_on2.png` e também exibido na tela.
+O gráfico é salvo como `comparacao_on_vs_on2_grande_escala.png` e também exibido na tela.
 
 ## 🎯 Benefícios da Modularização
 

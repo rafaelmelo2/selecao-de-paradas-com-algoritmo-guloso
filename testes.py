@@ -256,32 +256,52 @@ def gerar_graficos_desempenho():
     Executa testes de performance e gera gráfico comparativo O(n) vs O(n²).
     """
     print("\n" + "="*80)
-    print("📊 GERANDO GRÁFICO O(n) vs O(n²)")
+    print("📊 GERANDO GRÁFICO O(n) vs O(n²) - TESTES EM GRANDE ESCALA")
     print("="*80)
-    print("Executando testes de performance e comparando com crescimento quadrático...")
+    print("Executando testes com milhões de postos para demonstrar crescimento linear...")
     print("="*80)
     
     resultados = []
     
-    # Executa testes de performance (apenas os 3 primeiros para visualização otimizada)
-    for numero_teste in [5, 6, 7]:
-        configuracao = obter_configuracao_teste(numero_teste)
-        
-        print(f"\n🔹 Executando Teste {numero_teste}: {configuracao['titulo']}")
-        print(f"📊 Postos: {len(configuracao['posicoes_postos']):,} | Distância: {configuracao['destino_final']:,} km")
+    # Executa testes de performance com grandes volumes para demonstrar O(n)
+    # Criando casos de teste com volumes muito maiores
+    casos_grandes = [
+        {
+            'postos': list(range(0, 10000001, 10)),  # 1.000.000 postos
+            'autonomia': 200,
+            'destino': 10000000,
+            'titulo': 'Teste 1M postos'
+        },
+        {
+            'postos': list(range(0, 50000001, 10)),  # 5.000.000 postos
+            'autonomia': 200,
+            'destino': 50000000,
+            'titulo': 'Teste 5M postos'
+        },
+        {
+            'postos': list(range(0, 250000001, 10)),  # 25.000.000 postos
+            'autonomia': 200,
+            'destino': 250000000,
+            'titulo': 'Teste 25M postos'
+        }
+    ]
+    
+    for i, caso in enumerate(casos_grandes):
+        print(f"\n🔹 Executando {caso['titulo']}")
+        print(f"📊 Postos: {len(caso['postos']):,} | Distância: {caso['destino']:,} km")
         
         # Medição de tempo
         inicio = time.time()
-        paradas_necessarias = min_paradas_otimizado(configuracao['posicoes_postos'], 
-                                                   configuracao['autonomia_veiculo'], 
-                                                   configuracao['destino_final'])
+        paradas_necessarias = min_paradas_otimizado(caso['postos'], 
+                                                   caso['autonomia'], 
+                                                   caso['destino'])
         fim = time.time()
         tempo_execucao = fim - inicio
         
         # Armazena resultado
         resultados.append({
-            'teste': numero_teste,
-            'postos': len(configuracao['posicoes_postos']),
+            'teste': i + 1,
+            'postos': len(caso['postos']),
             'tempo': tempo_execucao,
             'paradas': len(paradas_necessarias) if paradas_necessarias else 0
         })
@@ -303,8 +323,8 @@ def gerar_graficos_desempenho():
     # Linha de tendência linear (O(n))
     z_linear = np.polyfit(postos, tempos, 1)
     p_linear = np.poly1d(z_linear)
-    ax.plot(postos, p_linear(postos), '--', color='#2E86AB', linewidth=2, 
-            label=f'Crescimento Linear O(n)')
+    # ax.plot(postos, p_linear(postos), '--', color='#2E86AB', linewidth=2, 
+    #         label=f'Crescimento Linear O(n)')
     
     # Crescimento quadrático hipotético para comparação
     # Usa o primeiro ponto como referência para normalizar
@@ -323,7 +343,7 @@ def gerar_graficos_desempenho():
     # Configurações do gráfico
     ax.set_xlabel('Número de Postos', fontsize=12, fontweight='bold')
     ax.set_ylabel('Tempo de Execução (segundos)', fontsize=12, fontweight='bold')
-    ax.set_title('Comparação O(n) vs O(n²) - Algoritmo Guloso de Paradas Mínimas', 
+    ax.set_title('Comparação O(n) vs O(n²) - Testes em Grande Escala (Milhões de Postos)', 
                  fontsize=14, fontweight='bold')
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=11, loc='upper left')
@@ -343,13 +363,13 @@ def gerar_graficos_desempenho():
     plt.tight_layout()
     
     # Salva o gráfico
-    nome_arquivo = 'comparacao_on_vs_on2.png'
+    nome_arquivo = 'comparacao_on_vs_on2_grande_escala.png'
     plt.savefig(nome_arquivo, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"\n✅ Gráfico salvo como: {nome_arquivo}")
     
     # Exibe análise dos resultados
     print("\n" + "="*80)
-    print("📈 ANÁLISE O(n) vs O(n²)")
+    print("📈 ANÁLISE O(n) vs O(n²) - TESTES EM GRANDE ESCALA")
     print("="*80)
     
     # Análise da complexidade
@@ -391,7 +411,7 @@ def gerar_graficos_desempenho():
     print("\n🎯 CONCLUSÕES:")
     print("   • O algoritmo guloso demonstra claramente comportamento O(n)")
     print("   • Se fosse O(n²), seria {:.0f}x mais lento no maior teste".format(fator_diferenca))
-    print("   • Eficiência linear mantida mesmo com 300.000 postos")
+    print("   • Eficiência linear mantida mesmo com 25 milhões de postos")
     print("   • Algoritmo otimizado e escalável")
     print("="*80)
     
