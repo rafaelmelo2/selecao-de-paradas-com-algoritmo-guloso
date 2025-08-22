@@ -1,4 +1,4 @@
-from testes import executar_teste, executar_todos_testes_performance
+from testes import executar_teste, executar_todos_testes_performance, gerar_graficos_desempenho
 
 def exibir_menu():
     """
@@ -18,6 +18,7 @@ def exibir_menu():
     print("8. Teste de desempenho (1.000.000 postos)")
     print("9. Teste de desempenho (10.000.000 postos)")
     print("10. 🚀 EXECUTAR TODOS OS TESTES DE PERFORMANCE")
+    print("11. 📊 GERAR GRÁFICOS DE DESEMPENHO")
     print("0. Sair")
     print("-"*60)
 
@@ -30,11 +31,11 @@ def obter_opcao_usuario():
     """
     while True:
         try:
-            opcao = int(input("Digite sua opção (0-10): "))
-            if 0 <= opcao <= 10:
+            opcao = int(input("Digite sua opção (0-11): "))
+            if 0 <= opcao <= 11:
                 return opcao
             else:
-                print("❌ Opção inválida! Digite um número entre 0 e 10.")
+                print("❌ Opção inválida! Digite um número entre 0 e 11.")
         except ValueError:
             print("❌ Entrada inválida! Digite um número.")
 
@@ -52,6 +53,8 @@ def menu_principal():
             break
         elif opcao == 10:
             executar_todos_testes_performance()
+        elif opcao == 11:
+            gerar_graficos_desempenho()
         else:
             executar_teste(opcao)
         

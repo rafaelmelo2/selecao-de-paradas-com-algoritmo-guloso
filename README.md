@@ -25,6 +25,7 @@ Trabalho 3/
 ├── algoritmo.py        # Implementação do algoritmo guloso
 ├── testes.py           # Casos de teste e execução
 ├── interface.py        # Interface do usuário e menu
+├── requirements.txt    # Dependências do projeto
 └── README.md           # Documentação do projeto
 ```
 
@@ -63,9 +64,16 @@ Trabalho 3/
 8. **1.000.000 postos**: 10x crescimento
 9. **10.000.000 postos**: 100x crescimento
 10. **🚀 Todos os Testes**: Execução automática com análise comparativa
+11. **📊 Gerar Gráficos**: Criação de gráficos de desempenho
 
 ## 🚀 Como Executar
 
+### Instalação das Dependências
+```bash
+pip install -r requirements.txt
+```
+
+### Execução do Programa
 ```bash
 python app.py
 ```
@@ -84,11 +92,28 @@ Escolha um caso de teste:
 2. Caso impossível
 3. Caso com múltiplos postos possíveis (guloso funcionando)
 4. Caso com excesso de postos (escolha mínima de paradas)
-5. Teste de desempenho (escala grande)
+5. Teste de desempenho (100.000 postos)
+6. Teste de desempenho (200.000 postos)
+7. Teste de desempenho (300.000 postos)
+8. Teste de desempenho (1.000.000 postos)
+9. Teste de desempenho (10.000.000 postos)
+10. 🚀 EXECUTAR TODOS OS TESTES DE PERFORMANCE
+11. 📊 GERAR GRÁFICOS DE DESEMPENHO
 0. Sair
 ------------------------------------------------------------
-Digite sua opção (0-5): 3
+Digite sua opção (0-11): 11
 ```
+
+### 📈 Funcionalidade de Gráficos
+
+A opção 11 executa testes de performance e gera um gráfico comparativo focado:
+
+- **Comparação O(n) vs O(n²)**: Demonstra visualmente a eficiência do algoritmo guloso
+- **Análise estatística**: Inclui R² para validar o ajuste linear
+- **Comparação quantitativa**: Mostra quantas vezes seria mais lento se fosse quadrático
+- **Testes otimizados**: Usa apenas os 3 primeiros testes de performance (100k, 200k, 300k postos) para melhor visualização
+
+O gráfico é salvo como `comparacao_on_vs_on2.png` e também exibido na tela.
 
 ## 🎯 Benefícios da Modularização
 
